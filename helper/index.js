@@ -1,6 +1,6 @@
 const axios = require('axios')
 const config  = require('config');
-const host = process.env.PORT || config.get('api.host')
+const host = process.env.HOST || config.get('api.host')
 
 const getItems = (array) => {
   let items = []

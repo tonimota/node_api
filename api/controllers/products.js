@@ -1,7 +1,7 @@
 const httpStatus = require('http-status')
 const axios = require('axios')
 const config  = require('config');
-const host = process.env.PORT || config.get('api.host')
+const host = process.env.HOST || config.get('api.host')
 const { normalizeProduct, productDescription, normalizeItems, productCategory } = require('../../helper/')
 
 class productsController {
