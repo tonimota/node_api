@@ -10,6 +10,10 @@ module.exports = () => {
 
   app.use(bodyParser.json());
 
+  app.get('/', (req, res) => {
+    res.json({ status: 'Server is running!' })
+  })
+  
   require('../api/routes/products')(app);
 
   return app;
