@@ -1,6 +1,4 @@
-const axios = require('axios')
-const config  = require('config');
-const host = process.env.HOST || config.get('api.host')
+const { getCategory, getDescription } = require('../api/service')
 
 const getItems = (array) => {
   let items = []
@@ -29,7 +27,7 @@ const normalizeItems = (data, category) => {
       name: "N/A",
       lastname: "N/A"
     },
-    categories: [category.name],
+    categories: category,
     items: getItems(data)
   }
   return listItems
@@ -61,12 +59,17 @@ const normalizeProduct = (data, description) => {
 }
 
 const productCategory = async (id) => {
-  response = await axios.get(`https://api.mercadolibre.com/categories/${id}`)
-  return response.data
+  let arr = []
+  response = await getCategory(id)
+  response = response.data.results
+  response.forEach(index => {
+    arr.push(index.title)
+  })
+  return arr
 }
 
 const productDescription = async (id) => {
-  return response = await axios.get(`${host}/items/${id}/descriptions`)
+  return response = await getDescription(id)
 }
 
 module.exports = { normalizeProduct, productDescription, normalizeItems, productCategory }
