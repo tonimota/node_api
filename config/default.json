@@ -4,6 +4,7 @@
   },
   "api": {
     "host": "https://api.mercadolibre.com/",
-    "site": "MLA"
+    "site": "MLA",
+    "limit": 4
   }
 }

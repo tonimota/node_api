@@ -3,12 +3,12 @@ const config  = require('config');
 const url = process.env.HOST || config.get('api.host')
 const site = process.env.SITE || config.get('api.site')
 
-const getAllProducts = (q) => {
-  return axios.get(`${url}/sites/${site}/search?q=${q}`)
+const getAllProducts = (q, size) => {
+  return axios.get(`${url}/sites/${site}/search?q=${q}&limit=${size}`)
 }
 
-const getCategory = (id) => {
-  return axios.get(`${url}/sites/${site}/search?category=${id}&limit=4`)
+const getCategory = (id, size) => {
+  return axios.get(`${url}/sites/${site}/search?category=${id}&limit=${size}`)
 }
 
 const getProductDetail = (id) => {

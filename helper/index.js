@@ -58,9 +58,9 @@ const normalizeProduct = (data, description) => {
   return productDetail
 }
 
-const productCategory = async (id) => {
+const productCategory = async (id, limit) => {
   let arr = []
-  response = await getCategory(id)
+  response = await getCategory(id, limit)
   response = response.data.results
   response.forEach(index => {
     arr.push(index.title)

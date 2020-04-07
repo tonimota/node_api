@@ -1,3 +1,6 @@
+const config  = require('config');
+const limitStd = process.env.limit || config.get('api.limit')
+
 const httpStatus = require('http-status')
 
 const { getAllProducts, getProductDetail } = require('../service')
@@ -7,11 +10,12 @@ const { normalizeProduct, productDescription, normalizeItems, productCategory } 
 class productsController {
 
   async listProducts(req, res) {
-    const { q } = req.query
+    let { q, limit } = req.query
+    limit ? limit : limitStd
     try {
-      let response = await getAllProducts(q)
+      let response = await getAllProducts(q, limit)
       let category = response.data.filters[0].values[0].id ? response.data.filters[0].values[0].id : response[0].category_id
-      response = normalizeItems(response.data.results, await productCategory(category))
+      response = normalizeItems(response.data.results, await productCategory(category, limit))
       return res.send(response)
     } catch (ex) {
       return res
