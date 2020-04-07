@@ -3,6 +3,7 @@
     "port" : 8080
   },
   "api": {
-    "host": "https://api.mercadolibre.com/"
+    "host": "https://api.mercadolibre.com/",
+    "site": "MLA"
   }
 }
