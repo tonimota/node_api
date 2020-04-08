@@ -23,4 +23,4 @@ Your app should now be running on [localhost:8080](http://localhost:8080/).
 ## Utils
 
 Basic applications for consumption only of a static route.
-The port can be changed in app.js
+The port can be changed in config defaults.
